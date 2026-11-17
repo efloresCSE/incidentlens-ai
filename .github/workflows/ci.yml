@@ -40,6 +40,9 @@ jobs:
       - name: Lint with Ruff
         run: ruff check .
 
+      - name: Check formatting
+        run: ruff format --check .
+
       # Run unit tests and measure test coverage
       - name: Run tests with coverage
         run: |
