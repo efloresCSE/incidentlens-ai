@@ -35,6 +35,10 @@ jobs:
       - name: Install dependencies
         run: python -m pip install -e ".[dev]"
 
-      # Step 4: Run our automated tests
+      # Step 4: Check Code Quality
+      - name: Lint with Ruff
+        run: ruff check .
+
+      # Step 5: Run our automated tests
       - name: Run tests
         run: python -m pytest -v
