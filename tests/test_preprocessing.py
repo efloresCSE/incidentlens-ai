@@ -1,4 +1,3 @@
-
 # Import the function we want to test.
 # "incidentlens" is our Python package.
 # "preprocessing" is the module (preprocessing.py).
@@ -47,4 +46,3 @@ def test_classify_error():
 def test_classify_other():
     result = classify_severity("Database connection established")
     assert result == "other"
-
