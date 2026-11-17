@@ -1,0 +1,40 @@
+
+# Name displayed in GitHub's Actions tab
+name: Python CI
+
+# Events that trigger this workflow
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+# Minimum permissions needed to read our repository
+permissions:
+  contents: read
+
+# Define the jobs in our workflow
+jobs:
+  test:
+    # Use a fresh GitHub-hosted Ubuntu runner
+    runs-on: ubuntu-latest
+
+    # Steps execute in sequence
+    steps:
+      # Step 1: Download repository code
+      - name: Checkout code
+        uses: actions/checkout@v7
+
+      # Step 2: Configure Python
+      - name: Set up Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+
+      # Step 3: Install our project and pytest
+      - name: Install dependencies
+        run: python -m pip install -e ".[dev]"
+
+      # Step 4: Run our automated tests
+      - name: Run tests
+        run: python -m pytest -v
