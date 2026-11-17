@@ -3,7 +3,10 @@
 # "incidentlens" is our Python package.
 # "preprocessing" is the module (preprocessing.py).
 # "normalize_message" is the function inside that module.
-from incidentlens.preprocessing import normalize_message
+from incidentlens.preprocessing import (
+    classify_severity,
+    normalize_message,
+)
 
 
 # TEST CASE 1: Normal input/Happy Path
@@ -34,3 +37,14 @@ def test_empty_message():
 
     # ASSERT: Verify the expected behavior.
     assert result == ""
+
+
+def test_classify_error():
+    result = classify_severity("ERROR: Database connection failed")
+    assert result == "error"
+
+
+def test_classify_other():
+    result = classify_severity("Database connection established")
+    assert result == "other"
+
