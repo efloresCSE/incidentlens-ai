@@ -6,6 +6,8 @@ __pycache__/
 dist/
 build/
 .env
+.mypy_cache
+
 # Coverage reports
 .coverage
 .coverage.*

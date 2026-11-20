@@ -43,6 +43,10 @@ jobs:
       - name: Check formatting
         run: ruff format --check .
 
+      # Check Python source code for type errors
+      - name: Type check with mypy
+        run: python -m mypy src/incidentlens
+
       # Run unit tests and measure test coverage
       - name: Run tests with coverage
         run: |

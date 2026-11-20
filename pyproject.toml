@@ -11,10 +11,25 @@ requires-python = ">=3.11"
 dependencies = []
 
 [project.optional-dependencies]
-dev = ["pytest>=8", "ruff", "pytest-cov"]
+dev = ["pytest>=8", "ruff", "pytest-cov", "mypy"]
 
 [tool.setuptools.packages.find]
 where = ["src"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
+
+
+[tool.mypy]
+
+# Target Python's 3.12 typing rules
+python_version = "3.12"
+
+# Require type annotations for functions
+disallow_untyped_defs = true
+
+# Report unnecessary type-ignore comments
+warn_unused_ignores = true
+
+# Include error codes in error messages
+show_error_codes = true
